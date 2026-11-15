@@ -1,0 +1,16 @@
+# build + tooling artifacts
+build/
+.cache/
+__pycache__/
+*.pyc
+.DS_Store
+
+# local env / secrets — never commit
+.env
+*.env
+*.key
+*.pem
+*.p12
+*secret*
+*credential*
+*.token
