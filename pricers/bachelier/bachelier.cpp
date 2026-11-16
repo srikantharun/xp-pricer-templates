@@ -1,10 +1,11 @@
 #include "xp/bachelier.hpp"
 #include <cmath>
+#include <numbers>
 #include <stdexcept>
 namespace xp {
 namespace {
-double norm_cdf(double x) { return 0.5 * std::erfc(-x * M_SQRT1_2); }
-double norm_pdf(double x) { return std::exp(-0.5 * x * x) / std::sqrt(2.0 * M_PI); }
+double norm_cdf(double x) { return 0.5 * std::erfc(-x * (std::numbers::sqrt2 / 2.0)); }
+double norm_pdf(double x) { return std::exp(-0.5 * x * x) / std::sqrt(2.0 * std::numbers::pi); }
 }  // namespace
 // Bachelier call: (F-K)*Phi(d) + s*phi(d), s = vol*sqrt(T), d = (F-K)/s.
 double bachelier_call(double forward, double strike, double vol, double maturity) {
